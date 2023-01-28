@@ -14,5 +14,11 @@
   games like Pokémon became a big part of my childhood. 
   Inspired by the games I played I had always wanted to build my own complex game, 
   but never learned the proper tools to do so.
-  So, with this project I hope to re-create the most fun aspect that drew me into the game of Pokémon,
+  With this project I hope to achieve my goal by re-creating the most fun aspect that drew me into the game of Pokémon,
   and finally build a game I enjoy.
+
+### User Stories
+- As a user, I want to be able to choose up to 6 unique Pokémon to add to my party
+- As a user, I want to be able to view the list of moves my current Pokémon can use in battle
+- As a user, I want to be able to choose a move from a list of moves to use in battle
+- As a user, I want to be able to view my party (list) of Pokémon
