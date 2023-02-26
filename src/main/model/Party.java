@@ -4,6 +4,7 @@ import java.util.List;
 
 // Represents a list of Pokemon available to use during battle
 public class Party {
+    private final static int MAX_PARTY_SIZE = 6;
     private List<Pokemon> party;
 
     // EFFECTS: Creates a party list that can hold up to 6 Pokemon
@@ -24,8 +25,18 @@ public class Party {
     // MODIFIES: this
     // EFFECTS: Adds given Pokemon to a party for up to a maximum of 6 Pokemon
     public void addMember(Pokemon pokemon){
-        if(this.party.size() < 6){
+        if(this.party.size() < MAX_PARTY_SIZE){
             this.party.add(pokemon);
         }
+    }
+
+    // EFFECTS: Return the current size of the party
+    public int getPartySize(){
+        return this.party.size();
+    }
+
+    // EFFECTS: Return the maximum party size
+    public int getMaxPartySize(){
+        return MAX_PARTY_SIZE;
     }
 }

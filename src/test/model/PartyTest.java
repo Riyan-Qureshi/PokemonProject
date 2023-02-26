@@ -23,7 +23,7 @@ public class PartyTest {
     void testAddMember(){
         Pokemon pokemon = testStoragePC.getPokemon(0);
         testParty.addMember(pokemon);
-        assertEquals(1, testParty.getParty().size());
+        assertEquals(1, testParty.getPartySize());
     }
 
     @Test
@@ -38,7 +38,7 @@ public class PartyTest {
 
         Pokemon pokemon = testStoragePC.getPokemon(0);
         testParty.addMember(pokemon);
-        assertEquals(6, testParty.getParty().size());
+        assertEquals(testParty.getMaxPartySize(), testParty.getPartySize());
     }
 
     @Test

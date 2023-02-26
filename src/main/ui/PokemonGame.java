@@ -33,7 +33,7 @@ public class PokemonGame {
         System.out.println("\nWelcome to the Pokemon Battle Dome!");
         String name = null;
         String choseName = "n";
-        String answer = null;
+        String answer;
 
         while(choseName.equals("n")){
             System.out.println("\nWhat is your name? Type here: ");
@@ -57,27 +57,26 @@ public class PokemonGame {
 
     // EFFECTS: Prompts user to choose up to 6 Pokemon to add to their Party from list of available Pokemon
     private void choosePokemonForParty(){
-        int partyCount = 0;
         int selectedPokemonSlotNum;
         boolean addedToParty;
-        boolean addPokemon = true;
+        int partySize = player.getParty().getPartySize();
+        int maxPartySize = player.getParty().getMaxPartySize();
 
         System.out.println("\nLet's get you battle ready!");
         System.out.println("\nBelow is a list of all the Pokemon you can choose to add to your Pokemon party.");
         listAllPokemon();
         System.out.println("\nYou can add up to 6 Pokemon from this list to your battle party.");
 
-        while(partyCount < 6 && addPokemon){
+        while(partySize < maxPartySize){
             System.out.println("\nChoose a Pokemon to add to your party: ");
             selectedPokemonSlotNum = input.nextInt();
             addedToParty = addPokemonToParty(selectedPokemonSlotNum);
 
             if(addedToParty){
-                partyCount++;
-                if(!keepAddingPokemon()){
+                partySize = player.getParty().getPartySize();
+                if(!keepAddingPokemon(partySize, maxPartySize)){
                     break;
                 }
-
 
             } else {
                 System.out.println("\nNumber selected is invalid...");
@@ -88,12 +87,12 @@ public class PokemonGame {
     }
 
     // EFFECTS: Prompts user to choose whether they would like to add more Pokemon to their party
-    public boolean keepAddingPokemon(){
+    public boolean keepAddingPokemon(int partySize, int maxPartySize){
         String command;
         boolean keepAdding = false;
         boolean validSelection = false;
 
-        while(!validSelection){
+        while(!validSelection && partySize < maxPartySize){
             System.out.println("Continue adding more Pokemon to your party?");
             System.out.println("\ty -> YES");
             System.out.println("\tn -> NO");
@@ -106,7 +105,6 @@ public class PokemonGame {
                 listAllPokemon();
                 validSelection = true;
             } else if(command.equals("n")) {
-                keepAdding = false;
                 validSelection = true;
             } else {
                 System.out.println("\nSelection is not valid, please select a valid response.");
@@ -117,7 +115,7 @@ public class PokemonGame {
     }
 
     // MODIFIES: this
-    // EFFECTS:
+    // EFFECTS: If user selects valid slot then adds Pokemon to party
     private boolean addPokemonToParty(int selectedPokemonSlotNum){
         Pokemon selectedPokemon;
         boolean validSlot = processSelectedSlotNum(selectedPokemonSlotNum);
@@ -140,7 +138,6 @@ public class PokemonGame {
         String previewAllPokemonString = availablePokemonStorage.displayAllPokemon();
         String[] previewAllPokemonList = previewAllPokemonString.split(",");
 
-        System.out.println("\n");
         for(String pokemonName : previewAllPokemonList){
             pokemonStorageSlotNum++;
             System.out.println("\t" + pokemonStorageSlotNum + ". " + previewAllPokemonList[pokemonStorageSlotNum - 1]);
