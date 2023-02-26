@@ -14,7 +14,7 @@ public class Pokemon {
     private List<Move> moves;
 
     // EFFECTS: Creates a Pokemon with a name, a type and a number of health points
-    public Pokemon(String name, Type type){
+    public Pokemon(String name, Type type) {
         setInitialHealthPoints();
         this.name = name;
         this.type = type;
@@ -23,7 +23,7 @@ public class Pokemon {
 
     // MODIFIES: this
     // EFFECTS: Generates random number of health points between specified min and max health
-    private void setInitialHealthPoints(){
+    private void setInitialHealthPoints() {
         Random generateHealth = new Random();
         final int minHealth = 140;
         final int maxHealth = 160;
@@ -31,13 +31,13 @@ public class Pokemon {
         this.healthPoints = generateHealth.nextInt(maxHealth - minHealth) + minHealth;
     }
 
-    public int getHealthPoints(){
+    public int getHealthPoints() {
         return this.healthPoints;
     }
 
     // REQUIRES: moves.size() > 0
     // EFFECTS: Returns the names of all the Pokemon's moves as a string
-    public String previewMoves(){
+    public String previewMoves() {
         List<String> allMovesStrings = this.moves.stream()
                 .map(Move::getMoveName)
                 .collect(Collectors.toList());
@@ -46,29 +46,29 @@ public class Pokemon {
         return allMoves;
     }
 
-    public List<Move> getMoves(){
+    public List<Move> getMoves() {
         return this.moves;
     }
 
     // REQUIRES: moves.size() > 0
     // EFFECTS: Returns selected move
-    public Move getMove(int moveNum){
+    public Move getMove(int moveNum) {
         return moves.get(moveNum);
     }
 
     // MODIFIES: this
     // EFFECTS: Adds move to list of moves up to a maximum of 4 moves
-    public void addMove(Move move){
-        if(moves.size() < 4){
+    public void addMove(Move move) {
+        if (moves.size() < 4) {
             this.moves.add(move);
         }
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public Type getType(){
+    public Type getType() {
         return this.type;
     }
 }

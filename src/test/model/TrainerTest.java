@@ -10,13 +10,13 @@ public class TrainerTest {
     private Trainer testTrainer;
 
     @BeforeEach
-    void runBefore(){
+    void runBefore() {
         testTrainer = new Trainer("Bob");
     }
 
     @Test
     @DisplayName("Should create a trainer with a name and an empty party")
-    void testConstructor(){
+    void testConstructor() {
         assertEquals("Bob", testTrainer.getName());
         assertEquals(0, testTrainer.getParty().getPartySize());
     }

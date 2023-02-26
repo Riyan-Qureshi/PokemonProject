@@ -1,19 +1,21 @@
 package model;
 
-// Represents a Trainer with a name and party of Pokemon
+// Represents a Pokemon Trainer with a name and party of Pokemon
 public class Trainer {
     private final String name;
-    private final Party myParty;
+    private Party myParty;
 
     // EFFECTS: Creates a Trainer with a given name and an empty party of Pokemon
-    public Trainer(String name){
+    public Trainer(String name) {
         this.name = name;
         this.myParty = new Party();
     }
 
-    public Party getParty(){
+    public Party getParty() {
         return this.myParty;
     }
 
-    public String getName(){ return this.name; }
+    public String getName() {
+        return this.name;
+    }
 }

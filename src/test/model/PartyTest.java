@@ -13,14 +13,14 @@ public class PartyTest {
     private GeneratePokemonPC testStoragePC;
 
     @BeforeEach
-    void runBefore(){
+    void runBefore() {
         testParty = new Party();
         testStoragePC = new GeneratePokemonPC();
     }
 
     @Test
     @DisplayName("It should add the given Pokemon to the party list and increase size of party by 1 when executed")
-    void testAddMember(){
+    void testAddMember() {
         Pokemon pokemon = testStoragePC.getPokemon(0);
         testParty.addMember(pokemon);
         assertEquals(1, testParty.getPartySize());
@@ -28,10 +28,10 @@ public class PartyTest {
 
     @Test
     @DisplayName("It should return 6 for the size of the party when adding more than 6 Pokemon to party")
-    void testMaxAddMember(){
+    void testMaxAddMember() {
         List<Pokemon> allPokemon = testStoragePC.getStorage();
 
-        for(int i = 0; i < allPokemon.size(); i++){ //Adds 6 Pokemon to the party
+        for (int i = 0; i < allPokemon.size(); i++) { //Adds 6 Pokemon to the party
             Pokemon pokemon = testStoragePC.getPokemon(i);
             testParty.addMember(pokemon);
         }
@@ -43,7 +43,7 @@ public class PartyTest {
 
     @Test
     @DisplayName("It should return the Pokemon in specified slot number when executed")
-    void testGetPartyMember(){
+    void testGetPartyMember() {
         Pokemon pokemon = testStoragePC.getPokemon(0);
         Pokemon expectedPokemon = pokemon;
 
