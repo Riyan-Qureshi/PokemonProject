@@ -2,6 +2,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 // Represents a storage space for all available created Pokemon
 public class GeneratePokemonPC {
@@ -27,14 +28,22 @@ public class GeneratePokemonPC {
         return generatedPokemon;
     }
 
-    // EFFECTS: Returns the names of all stored Pokemon as a string
+    // EFFECTS: Returns the names of all stored Pokemon as a comma-separated string
     public String displayAllPokemon(){
-        String allPokemonNames = "";
-
-        for(Pokemon pokemon : storage){
-            allPokemonNames = allPokemonNames + ", " + pokemon.getName();
-        }
+        List<String> allPokemonNamesStrings = this.storage.stream()
+                .map(Pokemon::getName)
+                .collect(Collectors.toList());
+        String allPokemonNames = String.join(", ", allPokemonNamesStrings);
 
         return allPokemonNames;
+    }
+
+    public List<Pokemon> getStorage(){
+        return this.storage;
+    }
+
+    // EFFECTS: Returns Pokemon at specified slot number
+    public Pokemon getPokemon(int slotNum){
+        return this.storage.get(slotNum);
     }
 }

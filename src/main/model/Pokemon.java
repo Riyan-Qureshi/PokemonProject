@@ -3,15 +3,16 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+
 
 // Represents a Pokemon having health points, a name, type, and a set of four moves
 public class Pokemon {
-    int healthPoints;
-    String name;
-    Type type;
-    List<Move> moves;
+    private int healthPoints;
+    private final String name;
+    private final Type type;
+    private List<Move> moves;
 
-    // REQUIRES: type to be a valid type of Pokemon
     // EFFECTS: Creates a Pokemon with a name, a type and a number of health points
     public Pokemon(String name, Type type){
         setInitialHealthPoints();
@@ -37,11 +38,10 @@ public class Pokemon {
     // REQUIRES: moves.size() > 0
     // EFFECTS: Returns the names of all the Pokemon's moves as a string
     public String previewMoves(){
-        String allMoves = moves.get(0).getMoveName();
-
-        for(int i = 1; i < moves.size(); i++){
-            allMoves = allMoves + ", " + moves.get(i).getMoveName();
-        }
+        List<String> allMovesStrings = this.moves.stream()
+                .map(Move::getMoveName)
+                .collect(Collectors.toList());
+        String allMoves = String.join(", ", allMovesStrings);
 
         return allMoves;
     }
@@ -57,7 +57,7 @@ public class Pokemon {
     }
 
     // MODIFIES: this
-    // EFFECTS: Adds move to list of moves as long as moves list contains <= 4 moves
+    // EFFECTS: Adds move to list of moves up to a maximum of 4 moves
     public void addMove(Move move){
         if(moves.size() < 4){
             this.moves.add(move);

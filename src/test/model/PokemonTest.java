@@ -1,7 +1,12 @@
 package model;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,6 +23,7 @@ class PokemonTest {
     }
 
     @Test
+    @DisplayName("Test correct Pokemon construction")
     void testConstructor(){
         assertEquals("Treecko", testPokemon.getName());
         assertEquals(Type.GRASS, testPokemon.getType());
@@ -28,6 +34,7 @@ class PokemonTest {
     }
 
     @Test
+    @DisplayName("Test preview all moves successfully")
     void testPreviewMoves(){
         testPokemon.addMove(move1);
         testPokemon.addMove(move2);
@@ -35,20 +42,30 @@ class PokemonTest {
     }
 
     @Test
+    @DisplayName("Test preview empty moves successfully")
+    void testEmptyPreviewMoves(){
+        assertEquals("", testPokemon.previewMoves());
+    }
+
+    @Test
+    @DisplayName("Test retrieve specified move from non-empty moves list successfully")
     void testGetMove(){
         testPokemon.addMove(move1);
         assertEquals(move1, testPokemon.getMove(0));
     }
 
     @Test
+    @DisplayName("It should return 4 moves when adding more than 4 moves")
     void testMaxAddMove(){
         testPokemon.addMove(move1);
         testPokemon.addMove(move2);
         testPokemon.addMove(move1);
         testPokemon.addMove(move2);
         testPokemon.addMove(move1);
+        List<Move> expectedResult = new ArrayList<>();
+        Collections.addAll(expectedResult, move1, move2, move1, move2);
 
-        assertEquals("Scratch, Punch, Scratch, Punch", testPokemon.previewMoves());
-
+        assertEquals(4, testPokemon.getMoves().size());
+        assertEquals(expectedResult, testPokemon.getMoves());
     }
 }

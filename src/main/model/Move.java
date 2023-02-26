@@ -2,8 +2,8 @@ package model;
 
 // Represents an ability that can be used by a particular Type of Pokemon
 public class Move {
-    private String moveName;
-    private int damage;
+    private final String moveName;
+    private final int damage;
 
     // EFFECTS: Creates a move with a name, and damage number in attack points
     public Move(String moveName, int attackPoints){
