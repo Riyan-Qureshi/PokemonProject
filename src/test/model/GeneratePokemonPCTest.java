@@ -29,7 +29,6 @@ public class GeneratePokemonPCTest {
         }
 
         String expectedString = String.join(", ", allPokemonNames);
-        //String expectedString = "Charizard, Blaustoise, Venasaur, Raticate, Vaporeon, Flareon";
 
         assertEquals(expectedString, testStoragePC.displayAllPokemon());
     }

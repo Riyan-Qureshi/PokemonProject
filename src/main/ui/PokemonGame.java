@@ -18,8 +18,9 @@ public class PokemonGame {
         initialize();
         createMyTrainer();
         choosePokemonForParty();
-        System.out.println("Now that you have your party assembled, let's start to battling!");
+        System.out.println("\nNow that you have your party assembled, let's get to battling!");
         introduceRival();
+        initiateBattleSequence();
     }
 
     // MODIFIES: this
@@ -81,7 +82,7 @@ public class PokemonGame {
                 }
 
             } else {
-                System.out.println("\nNumber selected is invalid...");
+                System.out.println("\nNumber selected is invalid..." + "\n");
                 listAllPokemon();
             }
         }
@@ -133,7 +134,7 @@ public class PokemonGame {
         return successfullyAdded;
     }
 
-    // EFFECTS: Creates a numerical list of all the available Pokemon in storage
+    // EFFECTS: Displays a numerical list of all the available Pokemon in storage
     private void listAllPokemon() {
         int pokemonStorageSlotNum = 0;
         String previewAllPokemonString = availablePokemonStorage.displayAllPokemon();
@@ -159,15 +160,89 @@ public class PokemonGame {
         return validSlot;
     }
 
-    // EFFECTS: Introduces a rival for the user to challenge
-    public void introduceRival(){
-        System.out.println("Your first challenger is your childhood rival, " + rival.getName() + "!");
-    }
-
-    // MODIFIES: this
-    // EFFECTS: Creates rival trainer Gary with a random Pokemon party of the same size as user
-    public void createRival(){
+    // EFFECTS: Creates and introduces a rival for the user to challenge
+    public void introduceRival() {
         rival = new Challenger("Gary", player.getParty().getPartySize());
-
+        System.out.println("\nYour first challenger is your childhood rival, " + rival.getName() + "!");
+        System.out.println("\nGet ready to battle " + rival.getName() + "!");
     }
+
+    // EFFECTS: Starts the battle sequence of the game where user battles rival
+    public void initiateBattleSequence(){
+        boolean validInput = false;
+        String rivalName = rival.getName();
+
+        System.out.println("\n*Insert Epic Transition*");
+        System.out.println("\n" + rivalName + ": " + player.getName() + ", you challenged the wrong guy!");
+
+        Pokemon currentRivalPokemon = rival.getParty().getPartyMember(0);
+        System.out.println("\n" + rivalName + " sent out " + currentRivalPokemon.getName() + "!");
+
+        Pokemon userCurrentPokemon = player.getParty().getPartyMember(0);
+        System.out.println("\nYou sent out " + userCurrentPokemon.getName() + "!");
+
+        while(!validInput){
+            System.out.println("\nWhat will you do?");
+            System.out.println("\nu -> Use a move");
+            System.out.println("\nv -> View party");
+            System.out.println("\nSelect an option:");
+
+            String battleCommand = input.next();
+            battleCommand = battleCommand.toLowerCase();
+
+            validInput = processBattleCommand(battleCommand, userCurrentPokemon);
+        }
+    }
+
+    // EFFECTS: Displays a numerical list of all the current Pokemon's moves
+    private void listAllMoves(Pokemon pokemon) {
+        int pokemonMoveSlotNum = 0;
+        String previewAllMovesString = pokemon.previewMoves();
+        String[] previewAllMovesList = previewAllMovesString.split(",");
+
+        for (String move : previewAllMovesList) {
+            pokemonMoveSlotNum++;
+            System.out.println("\t" + pokemonMoveSlotNum + ". " + previewAllMovesList[pokemonMoveSlotNum - 1]);
+        }
+    }
+
+    // EFFECTS: Processes battle command entered by user
+    private boolean processBattleCommand(String battleCommand, Pokemon currentPokemon) {
+        boolean validCommand = false;
+
+        while(!validCommand){
+            if (battleCommand.equals("u")) {
+                validCommand = true;
+                System.out.println("\nSelect a move:");
+                listAllMoves(currentPokemon);
+
+                int chosenMoveSlotNum = input.nextInt();
+                Move move = currentPokemon.getMove(chosenMoveSlotNum - 1);
+                System.out.println("\n" + currentPokemon.getName() + " used " + move.getMoveName() + "!");
+            } else if (battleCommand.equals("v")) {
+                validCommand = true;
+                System.out.println("Your Party:");
+                listAllPartyMembers();
+
+            } else {
+                System.out.println("Invalid input...");
+                break;
+            }
+        }
+
+        return validCommand;
+    }
+
+    // EFFECTS: Displays a numerical list of all the current Pokemon's moves
+    private void listAllPartyMembers() {
+        int pokemonPartySlotNum = 0;
+        String previewAllPartyNamesString = player.viewParty();
+        String[] previewAllPartyNamesList = previewAllPartyNamesString.split(",");
+
+        for (String pokemonName : previewAllPartyNamesList) {
+            pokemonPartySlotNum++;
+            System.out.println("\t" + pokemonPartySlotNum + ". " + previewAllPartyNamesList[pokemonPartySlotNum - 1]);
+        }
+    }
+
 }

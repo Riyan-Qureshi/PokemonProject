@@ -6,16 +6,16 @@ public class Move {
     private final int damage;
 
     // EFFECTS: Creates a move with a name, and damage number in attack points
-    public Move(String moveName, int attackPoints){
+    public Move(String moveName, int attackPoints) {
         this.moveName = moveName;
         this.damage = attackPoints;
     }
 
-    public String getMoveName(){
+    public String getMoveName() {
         return this.moveName;
     }
 
-    public int getDamage(){
+    public int getDamage() {
         return this.damage;
     }
 }

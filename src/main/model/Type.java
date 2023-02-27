@@ -1,7 +1,7 @@
 package model;
 
-// Represents the type of a Pokemon
+// Represents the unique characteristic of a Pokemon as a Type
 public enum Type {
-    FIRE, WATER, GRASS, NORMAL;
+    FIRE, WATER, GRASS, NORMAL
 }
 
