@@ -23,7 +23,7 @@ public class Trainer {
     }
 
     // EFFECTS: Returns the names of all Pokemon in myParty as a comma-separated string
-    public String viewParty(){
+    public String viewParty() {
         List<Pokemon> myParty = this.myParty.getParty();
         List<String> allPokemonNamesStrings = myParty.stream()
                 .map(Pokemon::getName)

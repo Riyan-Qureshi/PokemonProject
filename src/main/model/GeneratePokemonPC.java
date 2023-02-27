@@ -35,8 +35,8 @@ public class GeneratePokemonPC {
 
         Collections.addAll(generatedMoves, scratch, punch, kick, bite);
 
-        for(Pokemon pokemon : generatedPokemon){
-            for(Move move : generatedMoves){
+        for (Pokemon pokemon : generatedPokemon) {
+            for (Move move : generatedMoves) {
                 pokemon.addMove(move);
             }
         }

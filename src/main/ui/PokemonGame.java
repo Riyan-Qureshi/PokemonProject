@@ -168,7 +168,7 @@ public class PokemonGame {
     }
 
     // EFFECTS: Starts the battle sequence of the game where user battles rival
-    public void initiateBattleSequence(){
+    public void initiateBattleSequence() {
         boolean validInput = false;
         String rivalName = rival.getName();
 
@@ -181,7 +181,7 @@ public class PokemonGame {
         Pokemon userCurrentPokemon = player.getParty().getPartyMember(0);
         System.out.println("\nYou sent out " + userCurrentPokemon.getName() + "!");
 
-        while(!validInput){
+        while (!validInput) {
             System.out.println("\nWhat will you do?");
             System.out.println("\nu -> Use a move");
             System.out.println("\nv -> View party");
@@ -210,7 +210,7 @@ public class PokemonGame {
     private boolean processBattleCommand(String battleCommand, Pokemon currentPokemon) {
         boolean validCommand = false;
 
-        while(!validCommand){
+        while (!validCommand) {
             if (battleCommand.equals("u")) {
                 validCommand = true;
                 System.out.println("\nSelect a move:");
