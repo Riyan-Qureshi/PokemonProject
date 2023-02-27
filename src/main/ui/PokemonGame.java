@@ -89,7 +89,7 @@ public class PokemonGame {
     }
 
     // EFFECTS: Prompts user to choose whether they would like to add more Pokemon to their party
-    public boolean keepAddingPokemon(int partySize, int maxPartySize) {
+    private boolean keepAddingPokemon(int partySize, int maxPartySize) {
         String command;
         boolean keepAdding = false;
         boolean validSelection = false;
@@ -161,14 +161,14 @@ public class PokemonGame {
     }
 
     // EFFECTS: Creates and introduces a rival for the user to challenge
-    public void introduceRival() {
+    private void introduceRival() {
         rival = new Challenger("Gary", player.getParty().getPartySize());
         System.out.println("\nYour first challenger is your childhood rival, " + rival.getName() + "!");
         System.out.println("\nGet ready to battle " + rival.getName() + "!");
     }
 
     // EFFECTS: Starts the battle sequence of the game where user battles rival
-    public void initiateBattleSequence() {
+    private void initiateBattleSequence() {
         boolean validInput = false;
         String rivalName = rival.getName();
 
