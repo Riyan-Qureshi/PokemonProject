@@ -58,6 +58,7 @@ public class GeneratePokemonPC {
         return this.storage;
     }
 
+    // REQUIRES: this.storage.size() > 0 and 0 <= slotNum < this.storage.size()
     // EFFECTS: Returns Pokemon at specified slot number
     public Pokemon getPokemon(int slotNum) {
         return this.storage.get(slotNum);

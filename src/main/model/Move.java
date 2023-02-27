@@ -5,6 +5,7 @@ public class Move {
     private final String moveName;
     private final int damage;
 
+    // REQUIRES: attackPoints >= 0
     // EFFECTS: Creates a move with a name, and damage number in attack points
     public Move(String moveName, int attackPoints) {
         this.moveName = moveName;

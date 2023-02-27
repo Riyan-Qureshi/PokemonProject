@@ -8,10 +8,11 @@ import java.util.stream.Collectors;
 
 // Represents a Pokemon having health points, a name, type, and a set of four moves
 public class Pokemon {
+    private static final int MAX_MOVES = 4;
     private int healthPoints;
     private final String name;
     private final Type type;
-    private List<Move> moves;
+    private final List<Move> moves;
 
     // EFFECTS: Creates a Pokemon with a name, a type and a number of health points
     public Pokemon(String name, Type type) {
@@ -35,7 +36,6 @@ public class Pokemon {
         return this.healthPoints;
     }
 
-    // REQUIRES: moves.size() > 0
     // EFFECTS: Returns the names of all the Pokemon's moves as a string
     public String previewMoves() {
         List<String> allMovesStrings = this.moves.stream()
@@ -50,7 +50,7 @@ public class Pokemon {
         return this.moves;
     }
 
-    // REQUIRES: moves.size() > 0
+    // REQUIRES: moves.size() > 0 and 0 <= moveNum < moves.size()
     // EFFECTS: Returns selected move
     public Move getMove(int moveNum) {
         return moves.get(moveNum);
@@ -59,7 +59,7 @@ public class Pokemon {
     // MODIFIES: this
     // EFFECTS: Adds move to list of moves up to a maximum of 4 moves
     public void addMove(Move move) {
-        if (moves.size() < 4) {
+        if (moves.size() < MAX_MOVES) {
             this.moves.add(move);
         }
     }

@@ -7,6 +7,7 @@ public class Challenger extends Trainer {
     private final GeneratePokemonPC availablePokemonStorage;
     private final int partySize;
 
+    // REQUIRES: partySize > 0
     // EFFECTS: Creates a Challenger with a name and random Pokemon filled party of size partySize
     public Challenger(String name, int partySize) {
         super(name);
