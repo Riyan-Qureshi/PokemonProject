@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Riyan",
+    "myParty": {"party": [{
+      "healthPoints": 156,
+      "moves": [
+        {
+          "damage": 15,
+          "moveName": "Scratch"
+        },
+        {
+          "damage": 20,
+          "moveName": "Punch"
+        },
+        {
+          "damage": 20,
+          "moveName": "Kick"
+        },
+        {
+          "damage": 15,
+          "moveName": "Bite"
+        }
+      ],
+      "name": "Charizard",
+      "type": "FIRE"
+    }]}
+  },
+  {
+    "name": "Gary",
+    "myParty": {"party": [{
+      "healthPoints": 159,
+      "moves": [
+        {
+          "damage": 15,
+          "moveName": "Scratch"
+        },
+        {
+          "damage": 20,
+          "moveName": "Punch"
+        },
+        {
+          "damage": 20,
+          "moveName": "Kick"
+        },
+        {
+          "damage": 15,
+          "moveName": "Bite"
+        }
+      ],
+      "name": "Vaporeon",
+      "type": "WATER"
+    }]}
+  }
+]

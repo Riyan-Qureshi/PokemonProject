@@ -19,7 +19,7 @@ public class Challenger extends Trainer {
 
     // MODIFIES: this
     // EFFECTS: Creates a challenger with a name
-    public Challenger(String name){
+    public Challenger(String name) {
         super(name);
         availablePokemonStorage = new GeneratePokemonPC();
         this.partySize = getParty().getPartySize();

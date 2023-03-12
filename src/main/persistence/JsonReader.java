@@ -1,8 +1,6 @@
 package persistence;
 
-import model.Challenger;
-import model.Pokemon;
-import model.Trainer;
+import model.*;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -10,7 +8,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-import model.Type;
 import org.json.*;
 
 // Represents a reader that reads either trainer or challenger from JSON data stored in file
@@ -55,11 +52,6 @@ public class JsonReader {
 
     // EFFECTS: parses trainer from JSON object and returns it
     private Trainer parseTrainer(JSONObject playerState) {
-//        String name = jsonObject.getString("name");
-//        Trainer player = new Trainer(name);
-//        JSONObject party = jsonObject.getJSONObject("myParty");
-//        addParty(player, party);
-//        return player;
         String playerName = playerState.getString("name");
         Trainer player = new Trainer(playerName);
         JSONObject party = playerState.getJSONObject("myParty");
@@ -89,13 +81,35 @@ public class JsonReader {
     }
 
     // MODIFIES: player, challenger
-    // EFFECTS: parses pokemon from JSON object and adds it to workroom
+    // EFFECTS: parses pokemon from JSON object and adds it to party
     private void addPokemon(Trainer player, JSONObject jsonObject) {
         int healthPoints = jsonObject.getInt("healthPoints");
         String name = jsonObject.getString("name");
         Type type = Type.valueOf(jsonObject.getString("type"));
+        JSONArray moves = jsonObject.getJSONArray("moves");
+
         Pokemon pokemon = new Pokemon(name, type);
         pokemon.setHealthPoints(healthPoints);
+        addMoves(pokemon, moves);
         player.getParty().addMember(pokemon);
+    }
+
+    // MODIFIES: pokemon
+    // EFFECTS: parses moves from JSON array and adds it to pokemon
+    private void addMoves(Pokemon pokemon, JSONArray moves) {
+        for (Object move : moves) {
+            JSONObject nextMove = (JSONObject) move;
+            addMove(pokemon, nextMove);
+        }
+    }
+
+    // MODIFIES: pokemon
+    // EFFECTS: parses move from JSON object and adds it to pokemon moves
+    private void addMove(Pokemon pokemon, JSONObject nextMove) {
+        String moveName = nextMove.getString("moveName");
+        int damage = nextMove.getInt("damage");
+
+        Move move = new Move(moveName, damage);
+        pokemon.addMove(move);
     }
 }
