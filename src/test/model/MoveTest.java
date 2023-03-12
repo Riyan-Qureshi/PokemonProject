@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,5 +22,13 @@ public class MoveTest {
     @Test
     void testGetDamage(){
         assertEquals(20, testMove.getDamage());
+    }
+
+    @Test
+    void testToJson() {
+        JSONObject jsonObject = testMove.toJson();
+
+        assertEquals("Scratch", jsonObject.getString("moveName"));
+        assertEquals(20, jsonObject.getInt("damage"));
     }
 }

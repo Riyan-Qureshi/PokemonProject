@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -50,5 +52,32 @@ public class PartyTest {
         testParty.addMember(pokemon);
 
         assertEquals(expectedPokemon, testParty.getPartyMember(0));
+    }
+
+    @Test
+    void testToJson() {
+        JSONObject party = testParty.toJson();
+
+        assertEquals("{\"party\":[]}", party.toString());
+    }
+
+    @Test
+    void testPartyToJson() {
+        Pokemon pokemon = testStoragePC.getPokemon(0);
+        int pokemonHP = pokemon.getHealthPoints();
+        testParty.addMember(pokemon);
+
+        JSONArray party = testParty.partyToJson();
+
+        assertEquals("[{\"healthPoints\":" + pokemonHP + ",\"moves\":[{\"damage\":15,\"moveName\":\"Scratch\"},{\"damage\":20,\"moveName\":\"Punch\"},{\"damage\":20,\"moveName\":\"Kick\"},{\"damage\":15,\"moveName\":\"Bite\"}],\"name\":\"Charizard\",\"type\":\"FIRE\"}]", party.toString());
+    }
+
+    @Test
+    void testGetParty() {
+        assertEquals(0, testParty.getParty().size());
+
+        Pokemon pokemon = testStoragePC.getPokemon(0);
+        testParty.addMember(pokemon);
+        assertEquals(1, testParty.getParty().size());
     }
 }

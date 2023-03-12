@@ -1,33 +1,85 @@
 package ui;
 
 import model.*;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
+// Represents the pokemon game application
 public class PokemonGame {
+    private static final String JSON_STORAGE = "./data/pokemonGameSaveState.json";
     private Trainer player;
     private Challenger rival;
     private GeneratePokemonPC availablePokemonStorage;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     public PokemonGame() {
         runGame();
     }
 
+    // EFFECTS: Runs the pokemon game application
     private void runGame() {
-        initialize();
-        createMyTrainer();
-        choosePokemonForParty();
-        System.out.println("\nNow that you have your party assembled, let's get to battling!");
-        introduceRival();
+        try {
+            initialize();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to run application due to missing file");
+        }
+        gameStartMenu();
+    }
+
+    // EFFECTS: Displays a list of options to the user
+    private void gameStartMenu() {
+        System.out.println("Choose an option: ");
+        System.out.println("\tType Anything -> New Game");
+        System.out.println("\tl -> Load Game");
+
+        String command = input.next();
+        command = command.toLowerCase();
+
+        if (command.equals("l")) {
+            loadGame();
+        } else {
+            createMyTrainer();
+            choosePokemonForParty();
+            System.out.println("\nNow that you have your party assembled, let's get to battling!");
+            introduceRival();
+        }
+
         initiateBattleSequence();
+        //testSequence();
+    }
+
+    private void testSequence() {
+        boolean validInput = false;
+
+        Pokemon userCurrentPokemon = player.getParty().getPartyMember(0);
+        System.out.println("\nYou sent out " + userCurrentPokemon.getName() + "!");
+
+        while (!validInput) {
+            System.out.println("\nWhat will you do?");
+            System.out.println("\nu -> Use a move");
+            System.out.println("\nv -> View party");
+            System.out.println("\nSelect an option:");
+
+            String battleCommand = input.next();
+            battleCommand = battleCommand.toLowerCase();
+
+            validInput = processBattleCommand(battleCommand, userCurrentPokemon);
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: Initializes scanner and Pokemon storage
-    private void initialize() {
+    private void initialize() throws FileNotFoundException {
         this.availablePokemonStorage = new GeneratePokemonPC();
         this.input = new Scanner(System.in);
+        this.jsonWriter = new JsonWriter(JSON_STORAGE);
+        this.jsonReader = new JsonReader(JSON_STORAGE);
     }
 
     // MODIFIES: this
@@ -85,6 +137,41 @@ public class PokemonGame {
                 System.out.println("\nNumber selected is invalid..." + "\n");
                 listAllPokemon();
             }
+        }
+    }
+
+    // EFFECTS: Saves the trainer details to game file
+    private void saveGame() {
+        System.out.println("Would you like to save and quit the game?");
+        System.out.println("\ty -> YES");
+        System.out.println("\tn -> NO");
+        String command = input.next();
+        command = command.toLowerCase();
+
+        if (command.equals("y")) {
+            try {
+                jsonWriter.open();
+                jsonWriter.writeAll(player, rival);
+                //jsonWriter.write(player);
+                //jsonWriter.write(rival);
+                jsonWriter.close();
+                System.out.println(player.getName() + " successfully saved the game!");
+            } catch (FileNotFoundException e) {
+                System.out.println("Unable to write to file stored at: " + JSON_STORAGE);
+            }
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads all characters last saved state from game file
+    private void loadGame() {
+        try {
+            player = jsonReader.readTrainer();
+            rival = jsonReader.readChallenger();
+
+            System.out.println(player.getName() + " successfully loaded previous game state!");
+        } catch (IOException e) {
+            System.out.println("Unable to readTrainer file stored at: " + JSON_STORAGE);
         }
     }
 
@@ -165,6 +252,7 @@ public class PokemonGame {
         rival = new Challenger("Gary", player.getParty().getPartySize());
         System.out.println("\nYour first challenger is your childhood rival, " + rival.getName() + "!");
         System.out.println("\nGet ready to battle " + rival.getName() + "!");
+        saveGame();
     }
 
     // EFFECTS: Starts the battle sequence of the game where user battles rival
@@ -244,5 +332,4 @@ public class PokemonGame {
             System.out.println("\t" + pokemonPartySlotNum + ". " + previewAllPartyNamesList[pokemonPartySlotNum - 1]);
         }
     }
-
 }

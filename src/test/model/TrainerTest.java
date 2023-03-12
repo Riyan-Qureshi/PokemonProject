@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,5 +39,13 @@ public class TrainerTest {
         String expectedString = String.join(", ", allPokemonNames);
 
         assertEquals(expectedString, testTrainer.viewParty());
+    }
+
+    @Test
+    void testToJson(){
+        JSONObject jsonObject = testTrainer.toJson();
+
+        assertEquals("Bob", jsonObject.getString("name"));
+        assertEquals("{\"party\":[]}", jsonObject.getJSONObject("myParty").toString());
     }
 }

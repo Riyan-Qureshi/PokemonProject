@@ -22,3 +22,5 @@
 - As a user, I want to be able to view the list of moves my current Pokémon can use in battle
 - As a user, I want to be able to choose a move from a list of moves to use in battle
 - As a user, I want to be able to view my party (list) of Pokémon
+- As a user, I want to be able to save my created Trainer and my selected party in their current state
+- As a user, I want to be able to load my game from where I last saved my game

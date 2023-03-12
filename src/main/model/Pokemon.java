@@ -1,5 +1,9 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,7 +11,7 @@ import java.util.stream.Collectors;
 
 
 // Represents a Pokemon having health points, a name, type, and a set of four moves
-public class Pokemon {
+public class Pokemon implements Writable {
     private static final int MAX_MOVES = 4;
     private int healthPoints;
     private final String name;
@@ -34,6 +38,10 @@ public class Pokemon {
 
     public int getHealthPoints() {
         return this.healthPoints;
+    }
+
+    public void setHealthPoints(int hp) {
+        this.healthPoints = hp;
     }
 
     // EFFECTS: Returns the names of all the Pokemon's moves as a string
@@ -70,5 +78,27 @@ public class Pokemon {
 
     public Type getType() {
         return this.type;
+    }
+
+    @Override
+    // EFFECTS: returns pokemon as JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("healthPoints", healthPoints);
+        json.put("name", name);
+        json.put("type", type);
+        json.put("moves", movesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns moves as a JSON array
+    public JSONArray movesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Move move : moves) {
+            jsonArray.put(move.toJson());
+        }
+
+        return jsonArray;
     }
 }

@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -67,5 +69,36 @@ class PokemonTest {
 
         assertEquals(4, testPokemon.getMoves().size());
         assertEquals(expectedResult, testPokemon.getMoves());
+    }
+
+    @Test
+    void testSetHealthPoints(){
+        int healthPts = testPokemon.getHealthPoints();
+        boolean validHealth = healthPts >= 140 && healthPts <= 160;
+        assertTrue(validHealth);
+
+        testPokemon.setHealthPoints(150);
+        assertEquals(150, testPokemon.getHealthPoints());
+    }
+
+    @Test
+    void testToJson() {
+        JSONObject pokemon = testPokemon.toJson();
+        int pokemonHP = pokemon.getInt("healthPoints");
+
+        assertTrue(pokemonHP >= 140 && pokemonHP <= 160);
+        assertEquals("Treecko", pokemon.getString("name"));
+        Type type = pokemon.getEnum(Type.class,"type");
+        assertEquals(type.GRASS, type);
+
+        assertEquals("[]", pokemon.getJSONArray("moves").toString());
+    }
+
+    @Test
+    void testMovesToJson() {
+        testPokemon.addMove(move1);
+        JSONArray moves = testPokemon.movesToJson();
+
+        assertEquals("[{\"damage\":20,\"moveName\":\"Scratch\"}]", moves.toString());
     }
 }

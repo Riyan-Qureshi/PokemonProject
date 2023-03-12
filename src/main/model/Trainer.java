@@ -1,10 +1,13 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 // Represents a Pokemon Trainer with a name and party of Pokemon
-public class Trainer {
+public class Trainer implements Writable {
     private final String name;
     private Party myParty;
 
@@ -31,5 +34,14 @@ public class Trainer {
         String allPokemonNames = String.join(", ", allPokemonNamesStrings);
 
         return allPokemonNames;
+    }
+
+    @Override
+    // EFFECTS: returns trainer as JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("myParty", myParty.toJson());
+        return json;
     }
 }

@@ -9,11 +9,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ChallengerTest {
     private Challenger testChallenger1;
     private Challenger testChallenger2;
+    private Challenger testChallenger3;
 
     @BeforeEach
     void runBefore(){
         testChallenger1 = new Challenger("Gary", 5);
         testChallenger2 = new Challenger("Bob", 6);
+        testChallenger3 = new Challenger("Billy");
     }
 
     @Test
@@ -29,4 +31,12 @@ public class ChallengerTest {
         assertEquals(testChallenger2.getPartySize(), bobParty.getPartySize());
     }
 
+    @Test
+    void testConstructor2(){
+        assertEquals("Billy", testChallenger3.getName());
+
+        Party billyParty = testChallenger3.getParty();
+
+        assertEquals(testChallenger3.getPartySize(), billyParty.getPartySize());
+    }
 }

@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents an ability that can be used by a particular Type of Pokemon
-public class Move {
+public class Move implements Writable {
     private final String moveName;
     private final int damage;
 
@@ -18,5 +21,14 @@ public class Move {
 
     public int getDamage() {
         return this.damage;
+    }
+
+    @Override
+    // EFFECTS: returns move as JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("moveName", moveName);
+        json.put("damage", damage);
+        return json;
     }
 }

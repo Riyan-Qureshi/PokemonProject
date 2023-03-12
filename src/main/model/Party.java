@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // Represents a list of Pokemon available to use during battle
-public class Party {
+public class Party implements Writable {
     private static final int MAX_PARTY_SIZE = 6;
     private List<Pokemon> party;
 
@@ -39,5 +43,23 @@ public class Party {
     // EFFECTS: Return the maximum party size
     public int getMaxPartySize() {
         return MAX_PARTY_SIZE;
+    }
+
+    @Override
+    // EFFECTS: returns party as JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("party", partyToJson());
+        return json;
+    }
+
+    // EFFECTS: returns party as a JSON array
+    public JSONArray partyToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Pokemon pokemon : party) {
+            jsonArray.put(pokemon.toJson());
+        }
+        return jsonArray;
     }
 }
