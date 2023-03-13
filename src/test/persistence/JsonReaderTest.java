@@ -1,7 +1,6 @@
 package persistence;
 
 import model.Challenger;
-import model.Pokemon;
 import model.Trainer;
 import model.Type;
 import org.junit.jupiter.api.Test;
@@ -10,7 +9,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class JsonReaderTest {
+public class JsonReaderTest extends JsonTest{
 
     @Test
     void testReaderMissingFile() {
@@ -29,15 +28,7 @@ public class JsonReaderTest {
 
         try {
             Trainer trainer = reader.readTrainer();
-            assertEquals("Riyan", trainer.getName());
-            assertEquals(1, trainer.getParty().getPartySize());
-
-            Pokemon firstPokemon = trainer.getParty().getPartyMember(0);
-            assertEquals("Charizard", firstPokemon.getName());
-            assertEquals(156, firstPokemon.getHealthPoints());
-            Type type = firstPokemon.getType();
-            assertEquals(type.FIRE, type);
-            assertEquals(4, firstPokemon.getMoves().size());
+            checkTrainer("Riyan", 1, "Charizard", 156, Type.FIRE, trainer);
         } catch(IOException e) {
             fail("Expected file not found");
         }
@@ -49,16 +40,7 @@ public class JsonReaderTest {
 
         try {
             Challenger rival = reader.readChallenger();
-            assertEquals("Gary", rival.getName());
-            assertEquals(1, rival.getParty().getPartySize());
-
-            Pokemon firstPokemon = rival.getParty().getPartyMember(0);
-            assertEquals("Vaporeon", firstPokemon.getName());
-            assertEquals(159, firstPokemon.getHealthPoints());
-            Type type = firstPokemon.getType();
-            assertEquals(type.WATER, type);
-            assertEquals(4, firstPokemon.getMoves().size());
-
+            checkTrainer("Gary", 1, "Vaporeon", 159, Type.WATER, rival);
         } catch(IOException e) {
             fail("Expected file not found");
         }
