@@ -2,7 +2,7 @@
     {
         "name": "Riyan",
         "myParty": {"party": [{
-            "healthPoints": 151,
+            "healthPoints": 155,
             "moves": [
                 {
                     "damage": 15,
@@ -28,7 +28,7 @@
     {
         "name": "Gary",
         "myParty": {"party": [{
-            "healthPoints": 151,
+            "healthPoints": 155,
             "moves": [
                 {
                     "damage": 15,

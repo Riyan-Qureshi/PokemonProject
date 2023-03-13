@@ -32,6 +32,7 @@ public class PokemonGame {
         gameStartMenu();
     }
 
+    // REQUIRES: loadGame() requires game to have already been saved at some prior point
     // EFFECTS: Displays a list of options to the user
     private void gameStartMenu() {
         System.out.println("Choose an option: ");
@@ -51,26 +52,6 @@ public class PokemonGame {
         }
 
         initiateBattleSequence();
-        //testSequence();
-    }
-
-    private void testSequence() {
-        boolean validInput = false;
-
-        Pokemon userCurrentPokemon = player.getParty().getPartyMember(0);
-        System.out.println("\nYou sent out " + userCurrentPokemon.getName() + "!");
-
-        while (!validInput) {
-            System.out.println("\nWhat will you do?");
-            System.out.println("\nu -> Use a move");
-            System.out.println("\nv -> View party");
-            System.out.println("\nSelect an option:");
-
-            String battleCommand = input.next();
-            battleCommand = battleCommand.toLowerCase();
-
-            validInput = processBattleCommand(battleCommand, userCurrentPokemon);
-        }
     }
 
     // MODIFIES: this
@@ -163,6 +144,7 @@ public class PokemonGame {
         }
     }
 
+    // REQUIRES: loadGame() requires game to have already been saved at some prior point
     // MODIFIES: this
     // EFFECTS: loads all characters last saved state from game file
     private void loadGame() {

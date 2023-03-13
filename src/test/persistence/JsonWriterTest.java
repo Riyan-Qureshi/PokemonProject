@@ -41,8 +41,8 @@ public class JsonWriterTest extends JsonTest{
             player = reader.readTrainer();
             rival = reader.readChallenger();
 
-           checkTrainer("Riyan", 1, "Charizard", pokemon.getHealthPoints(), Type.FIRE, player);
-           checkTrainer("Gary", 1, "Charizard", pokemon.getHealthPoints(), Type.FIRE, rival);
+            checkTrainer("Riyan", 1, "Charizard", pokemon.getHealthPoints(), Type.FIRE, player);
+            checkTrainer("Gary", 1, "Charizard", pokemon.getHealthPoints(), Type.FIRE, rival);
         } catch(IOException e) {
             fail("Expected file not found");
         }

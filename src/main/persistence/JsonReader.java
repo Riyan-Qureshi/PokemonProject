@@ -19,6 +19,7 @@ public class JsonReader {
         this.source = source;
     }
 
+    // REQUIRES: A save file with valid content
     // EFFECTS: reads trainer from file and returns it;
     // throws IOException if an error occurs reading data from file
     public Trainer readTrainer() throws IOException {
@@ -28,6 +29,7 @@ public class JsonReader {
         return parseTrainer(playerState);
     }
 
+    // REQUIRES: A save file with valid content
     // EFFECTS: reads challenger from file and returns it;
     // throws IOException if an error occurs reading data from file
     public Challenger readChallenger() throws IOException {

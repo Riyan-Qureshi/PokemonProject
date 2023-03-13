@@ -1,54 +1,150 @@
 [
     {
         "name": "Riyan",
-        "myParty": {"party": [{
-            "healthPoints": 156,
-            "moves": [
-                {
-                    "damage": 15,
-                    "moveName": "Scratch"
-                },
-                {
-                    "damage": 20,
-                    "moveName": "Punch"
-                },
-                {
-                    "damage": 20,
-                    "moveName": "Kick"
-                },
-                {
-                    "damage": 15,
-                    "moveName": "Bite"
-                }
-            ],
-            "name": "Charizard",
-            "type": "FIRE"
-        }]}
+        "myParty": {"party": [
+            {
+                "healthPoints": 159,
+                "moves": [
+                    {
+                        "damage": 15,
+                        "moveName": "Scratch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Punch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Kick"
+                    },
+                    {
+                        "damage": 15,
+                        "moveName": "Bite"
+                    }
+                ],
+                "name": "Charizard",
+                "type": "FIRE"
+            },
+            {
+                "healthPoints": 157,
+                "moves": [
+                    {
+                        "damage": 15,
+                        "moveName": "Scratch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Punch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Kick"
+                    },
+                    {
+                        "damage": 15,
+                        "moveName": "Bite"
+                    }
+                ],
+                "name": "Blaustoise",
+                "type": "WATER"
+            },
+            {
+                "healthPoints": 140,
+                "moves": [
+                    {
+                        "damage": 15,
+                        "moveName": "Scratch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Punch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Kick"
+                    },
+                    {
+                        "damage": 15,
+                        "moveName": "Bite"
+                    }
+                ],
+                "name": "Venasaur",
+                "type": "GRASS"
+            }
+        ]}
     },
     {
         "name": "Gary",
-        "myParty": {"party": [{
-            "healthPoints": 159,
-            "moves": [
-                {
-                    "damage": 15,
-                    "moveName": "Scratch"
-                },
-                {
-                    "damage": 20,
-                    "moveName": "Punch"
-                },
-                {
-                    "damage": 20,
-                    "moveName": "Kick"
-                },
-                {
-                    "damage": 15,
-                    "moveName": "Bite"
-                }
-            ],
-            "name": "Vaporeon",
-            "type": "WATER"
-        }]}
+        "myParty": {"party": [
+            {
+                "healthPoints": 158,
+                "moves": [
+                    {
+                        "damage": 15,
+                        "moveName": "Scratch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Punch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Kick"
+                    },
+                    {
+                        "damage": 15,
+                        "moveName": "Bite"
+                    }
+                ],
+                "name": "Venasaur",
+                "type": "GRASS"
+            },
+            {
+                "healthPoints": 147,
+                "moves": [
+                    {
+                        "damage": 15,
+                        "moveName": "Scratch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Punch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Kick"
+                    },
+                    {
+                        "damage": 15,
+                        "moveName": "Bite"
+                    }
+                ],
+                "name": "Vaporeon",
+                "type": "WATER"
+            },
+            {
+                "healthPoints": 143,
+                "moves": [
+                    {
+                        "damage": 15,
+                        "moveName": "Scratch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Punch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Kick"
+                    },
+                    {
+                        "damage": 15,
+                        "moveName": "Bite"
+                    }
+                ],
+                "name": "Flareon",
+                "type": "FIRE"
+            }
+        ]}
     }
 ]

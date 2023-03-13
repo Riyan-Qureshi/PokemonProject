@@ -25,6 +25,8 @@ public class JsonWriter {
         writer = new PrintWriter(new File(destination));
     }
 
+    // MODIFIES: this
+    // EFFECTS: takes trainer and challenger objects and stores them as data in json file
     public void writeAll(Trainer trainerState, Challenger challengerState) {
         JSONObject jsonTrainer = trainerState.toJson();
         JSONObject jsonChallenger = challengerState.toJson();
