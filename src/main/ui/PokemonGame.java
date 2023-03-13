@@ -110,6 +110,7 @@ public class PokemonGame {
         System.out.println("\nIt's nice to meet you " + name + "!");
     }
 
+    // REQUIRES: selectedPokemonSlotNum input must be integer
     // EFFECTS: Prompts user to choose up to 6 Pokemon to add to their Party from list of available Pokemon
     private void choosePokemonForParty() {
         int selectedPokemonSlotNum;
