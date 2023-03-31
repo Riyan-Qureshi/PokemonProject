@@ -30,7 +30,7 @@
 - You can generate the first required action related to adding Xs to a Y by clicking on any of the pokemon names to add 
   to your party
 - You can generate the second required action related to adding Xs to a Y by first selecting finished selection, then 
-  selecting the view party button, and finally selecting the shuffle button
+  selecting the view party button, and finally selecting the reverse button
 - You can locate my visual component by first selecting finished selection, then selecting either save or load buttons
 - You can save the state of my application by first selecting finished selection, then selecting save button
 - You can reload the state of my application by first selecting finished selection, then selecting load button

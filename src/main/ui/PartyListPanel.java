@@ -55,7 +55,7 @@ public class PartyListPanel extends JPanel {
     private void setUpButtons() {
         JButton back = new JButton("Back");
         JButton showMoves = new JButton("Show Moves");
-        JButton shuffle = new JButton("Shuffle");
+        JButton shuffle = new JButton("Reverse");
         allButtons.add(back);
         allButtons.add(showMoves);
         allButtons.add(shuffle);
