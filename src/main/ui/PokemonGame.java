@@ -124,7 +124,6 @@ public class PokemonGame {
 
     // EFFECTS: Saves the trainer details to game file
     private void saveGame() {
-        System.out.println("Would you like to save and quit the game?");
         System.out.println("\ty -> YES");
         System.out.println("\tn -> NO");
         String command = input.next();
@@ -134,8 +133,6 @@ public class PokemonGame {
             try {
                 jsonWriter.open();
                 jsonWriter.writeAll(player, rival);
-                //jsonWriter.write(player);
-                //jsonWriter.write(rival);
                 jsonWriter.close();
                 System.out.println(player.getName() + " successfully saved the game!");
             } catch (FileNotFoundException e) {
@@ -235,6 +232,7 @@ public class PokemonGame {
         rival = new Challenger("Gary", player.getParty().getPartySize());
         System.out.println("\nYour first challenger is your childhood rival, " + rival.getName() + "!");
         System.out.println("\nGet ready to battle " + rival.getName() + "!");
+        System.out.println("\nWould you like to save your current progress before battle?");
         saveGame();
     }
 
@@ -252,7 +250,7 @@ public class PokemonGame {
         Pokemon userCurrentPokemon = player.getParty().getPartyMember(0);
         System.out.println("\nYou sent out " + userCurrentPokemon.getName() + "!");
 
-        while (!validInput) {
+        while (currentRivalPokemon.getHealthPoints() > 0 && userCurrentPokemon.getHealthPoints() > 0) {
             System.out.println("\nWhat will you do?");
             System.out.println("\nu -> Use a move");
             System.out.println("\nv -> View party");
@@ -284,12 +282,7 @@ public class PokemonGame {
         while (!validCommand) {
             if (battleCommand.equals("u")) {
                 validCommand = true;
-                System.out.println("\nSelect a move:");
-                listAllMoves(currentPokemon);
-
-                int chosenMoveSlotNum = input.nextInt();
-                Move move = currentPokemon.getMove(chosenMoveSlotNum - 1);
-                System.out.println("\n" + currentPokemon.getName() + " used " + move.getMoveName() + "!");
+                initiateAttackSequence(currentPokemon);
             } else if (battleCommand.equals("v")) {
                 validCommand = true;
                 System.out.println("Your Party:");
@@ -302,6 +295,49 @@ public class PokemonGame {
         }
 
         return validCommand;
+    }
+
+    // REQUIRES: User must choose a number between 1-4
+    // EFFECTS: Allows user to choose a move to attack enemy with and allows enemy to attack user
+    private void initiateAttackSequence(Pokemon currentPokemon) {
+        Boolean hasFainted = false;
+
+        while(!hasFainted) {
+            System.out.println("\nSelect a Move:");
+            listAllMoves(currentPokemon);
+
+            int chosenMoveSlotNum = input.nextInt();
+            Move userMove = currentPokemon.getMove(chosenMoveSlotNum - 1);
+            System.out.println("\n" + currentPokemon.getName() + " used " + userMove.getMoveName() + "!");
+
+            Pokemon rivalCurrentPokemon = rival.getParty().getPartyMember(0);
+            int currentHealth = rivalCurrentPokemon.getHealthPoints();
+            int newHealth = currentHealth - userMove.getDamage();
+
+            if (newHealth <= 0) {
+                rivalCurrentPokemon.setHealthPoints(0);
+                System.out.println("\n" + rivalCurrentPokemon.getName() + " has fainted!");
+                hasFainted = true;
+                break;
+            } else {
+                rivalCurrentPokemon.setHealthPoints(newHealth);
+                System.out.println("\nRival Gary's " + rivalCurrentPokemon.getName() + "'s HP was reduced to " + newHealth + " from " + currentHealth);
+            }
+
+            Move rivalMove = rivalCurrentPokemon.getMove(0);
+            currentHealth = currentPokemon.getHealthPoints();
+            newHealth = currentHealth - rivalMove.getDamage();
+
+            if (newHealth <= 0) {
+                currentPokemon.setHealthPoints(0);
+                System.out.println("\n" + currentPokemon.getName() + " has fainted!");
+                hasFainted = true;
+            } else {
+                currentPokemon.setHealthPoints(newHealth);
+                System.out.println("\n" + rivalCurrentPokemon.getName() + " used " + rivalMove.getMoveName() + "!");
+                System.out.println("\nYour " + currentPokemon.getName() + "'s HP was reduced to " + newHealth + " from " + currentHealth);
+            }
+        }
     }
 
     // EFFECTS: Displays a numerical list of all the current Pokemon's moves

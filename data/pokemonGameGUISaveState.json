@@ -1,103 +1,6 @@
 [
     {
-        "name": "akira",
-        "myParty": {"party": [
-            {
-                "healthPoints": 149,
-                "moves": [
-                    {
-                        "damage": 15,
-                        "moveName": "Scratch"
-                    },
-                    {
-                        "damage": 20,
-                        "moveName": "Punch"
-                    },
-                    {
-                        "damage": 20,
-                        "moveName": "Kick"
-                    },
-                    {
-                        "damage": 15,
-                        "moveName": "Bite"
-                    }
-                ],
-                "name": "Vaporeon",
-                "type": "WATER"
-            },
-            {
-                "healthPoints": 148,
-                "moves": [
-                    {
-                        "damage": 15,
-                        "moveName": "Scratch"
-                    },
-                    {
-                        "damage": 20,
-                        "moveName": "Punch"
-                    },
-                    {
-                        "damage": 20,
-                        "moveName": "Kick"
-                    },
-                    {
-                        "damage": 15,
-                        "moveName": "Bite"
-                    }
-                ],
-                "name": "Flareon",
-                "type": "FIRE"
-            },
-            {
-                "healthPoints": 141,
-                "moves": [
-                    {
-                        "damage": 15,
-                        "moveName": "Scratch"
-                    },
-                    {
-                        "damage": 20,
-                        "moveName": "Punch"
-                    },
-                    {
-                        "damage": 20,
-                        "moveName": "Kick"
-                    },
-                    {
-                        "damage": 15,
-                        "moveName": "Bite"
-                    }
-                ],
-                "name": "Charizard",
-                "type": "FIRE"
-            },
-            {
-                "healthPoints": 151,
-                "moves": [
-                    {
-                        "damage": 15,
-                        "moveName": "Scratch"
-                    },
-                    {
-                        "damage": 20,
-                        "moveName": "Punch"
-                    },
-                    {
-                        "damage": 20,
-                        "moveName": "Kick"
-                    },
-                    {
-                        "damage": 15,
-                        "moveName": "Bite"
-                    }
-                ],
-                "name": "Blaustoise",
-                "type": "WATER"
-            }
-        ]}
-    },
-    {
-        "name": "Gary",
+        "name": "riyan",
         "myParty": {"party": [
             {
                 "healthPoints": 147,
@@ -123,7 +26,104 @@
                 "type": "FIRE"
             },
             {
-                "healthPoints": 140,
+                "healthPoints": 155,
+                "moves": [
+                    {
+                        "damage": 15,
+                        "moveName": "Scratch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Punch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Kick"
+                    },
+                    {
+                        "damage": 15,
+                        "moveName": "Bite"
+                    }
+                ],
+                "name": "Blaustoise",
+                "type": "WATER"
+            },
+            {
+                "healthPoints": 152,
+                "moves": [
+                    {
+                        "damage": 15,
+                        "moveName": "Scratch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Punch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Kick"
+                    },
+                    {
+                        "damage": 15,
+                        "moveName": "Bite"
+                    }
+                ],
+                "name": "Venasaur",
+                "type": "GRASS"
+            },
+            {
+                "healthPoints": 150,
+                "moves": [
+                    {
+                        "damage": 15,
+                        "moveName": "Scratch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Punch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Kick"
+                    },
+                    {
+                        "damage": 15,
+                        "moveName": "Bite"
+                    }
+                ],
+                "name": "Raticate",
+                "type": "NORMAL"
+            }
+        ]}
+    },
+    {
+        "name": "Gary",
+        "myParty": {"party": [
+            {
+                "healthPoints": 143,
+                "moves": [
+                    {
+                        "damage": 15,
+                        "moveName": "Scratch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Punch"
+                    },
+                    {
+                        "damage": 20,
+                        "moveName": "Kick"
+                    },
+                    {
+                        "damage": 15,
+                        "moveName": "Bite"
+                    }
+                ],
+                "name": "Venasaur",
+                "type": "GRASS"
+            },
+            {
+                "healthPoints": 154,
                 "moves": [
                     {
                         "damage": 15,
@@ -146,7 +146,7 @@
                 "type": "WATER"
             },
             {
-                "healthPoints": 145,
+                "healthPoints": 154,
                 "moves": [
                     {
                         "damage": 15,
@@ -165,11 +165,11 @@
                         "moveName": "Bite"
                     }
                 ],
-                "name": "Raticate",
-                "type": "NORMAL"
+                "name": "Vaporeon",
+                "type": "WATER"
             },
             {
-                "healthPoints": 146,
+                "healthPoints": 142,
                 "moves": [
                     {
                         "damage": 15,
@@ -188,8 +188,8 @@
                         "moveName": "Bite"
                     }
                 ],
-                "name": "Blaustoise",
-                "type": "WATER"
+                "name": "Flareon",
+                "type": "FIRE"
             }
         ]}
     }
