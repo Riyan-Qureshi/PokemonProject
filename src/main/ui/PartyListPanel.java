@@ -15,6 +15,7 @@ public class PartyListPanel extends JPanel {
     private JLabel titleText;
     private List<JButton> allButtons = new ArrayList<>();
 
+    // EFFECTS: Sets up the partySelectPanel
     public PartyListPanel(String pokemonParty) {
         setUpPanel();
         setUpButtons();
@@ -51,6 +52,7 @@ public class PartyListPanel extends JPanel {
         setLayout(new GridLayout(3, 2));
     }
 
+    // MODIFIES: this
     // EFFECTS: Creates all buttons
     private void setUpButtons() {
         JButton back = new JButton("Back");
@@ -61,6 +63,7 @@ public class PartyListPanel extends JPanel {
         allButtons.add(shuffle);
     }
 
+    // MODIFIES: this
     // EFFECTS: Creates all labels
     private void setUpLabels() {
         titleText = new JLabel("Your Current Party: ");
@@ -69,6 +72,7 @@ public class PartyListPanel extends JPanel {
     public List<JButton> getAllButtons() {
         return allButtons;
     }
+
 
     // EFFECTS: When run will execute any line of code assigned to it
     public void executeAction() {

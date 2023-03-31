@@ -15,6 +15,7 @@ public class PartySelectPanel extends JPanel {
     protected List<JButton> allPartyButtons;
     private List<String> currentPartyList = new ArrayList<>();
 
+    // EFFECTS: Sets up the partySelectPanel
     public PartySelectPanel() {
         label = new JLabel("Choose a Pokemon to add to your party: ");
         remainingPokemon = new JLabel("Remaining Pokemon: 6");

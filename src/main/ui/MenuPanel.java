@@ -9,6 +9,7 @@ import java.util.List;
 public class MenuPanel extends JPanel {
     protected List<JButton> options = new ArrayList<>();
 
+    // EFFECTS: Sets up the menu panel
     public MenuPanel() {
         JLabel label = new JLabel("Options: ");
         add(label);

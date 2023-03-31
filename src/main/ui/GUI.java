@@ -29,6 +29,7 @@ public class GUI extends JFrame {
     private PartyListPanel partyListPanel;
     private ImageIcon icon = new ImageIcon("./data/smallPokeball.png");
 
+    // EFFECTS: Sets up the GUI
     public GUI() {
         super("Pokemon Game");
         try {
