@@ -299,10 +299,11 @@ public class PokemonGame {
 
     // REQUIRES: User must choose a number between 1-4
     // EFFECTS: Allows user to choose a move to attack enemy with and allows enemy to attack user
+    @SuppressWarnings("methodlength")
     private void initiateAttackSequence(Pokemon currentPokemon) {
         Boolean hasFainted = false;
 
-        while(!hasFainted) {
+        while (!hasFainted) {
             System.out.println("\nSelect a Move:");
             listAllMoves(currentPokemon);
 
@@ -321,7 +322,8 @@ public class PokemonGame {
                 break;
             } else {
                 rivalCurrentPokemon.setHealthPoints(newHealth);
-                System.out.println("\nRival Gary's " + rivalCurrentPokemon.getName() + "'s HP was reduced to " + newHealth + " from " + currentHealth);
+                System.out.println("\nRival Gary's " + rivalCurrentPokemon.getName() + "'s HP was reduced to "
+                        + newHealth + " from " + currentHealth);
             }
 
             Move rivalMove = rivalCurrentPokemon.getMove(0);
@@ -334,8 +336,10 @@ public class PokemonGame {
                 hasFainted = true;
             } else {
                 currentPokemon.setHealthPoints(newHealth);
-                System.out.println("\n" + rivalCurrentPokemon.getName() + " used " + rivalMove.getMoveName() + "!");
-                System.out.println("\nYour " + currentPokemon.getName() + "'s HP was reduced to " + newHealth + " from " + currentHealth);
+                System.out.println("\n" + rivalCurrentPokemon.getName() + " used "
+                        + rivalMove.getMoveName() + "!");
+                System.out.println("\nYour " + currentPokemon.getName() + "'s HP was reduced to "
+                        + newHealth + " from " + currentHealth);
             }
         }
     }
