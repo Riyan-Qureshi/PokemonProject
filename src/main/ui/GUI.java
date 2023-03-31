@@ -220,7 +220,7 @@ public class GUI extends JFrame {
     // MODIFIES: this
     // EFFECTS: Prompts user to provide details about themselves to create their personal Trainer
     private void createMyTrainer() {
-        var name = JOptionPane.showInputDialog("What is your name?");
+        String name = JOptionPane.showInputDialog("What is your name?");
         player = new Trainer(name);
         System.out.println("\nIt's nice to meet you " + name + "!");
     }
