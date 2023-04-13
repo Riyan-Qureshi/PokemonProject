@@ -34,3 +34,21 @@
 - You can locate my visual component by first selecting finished selection, then selecting either save or load buttons
 - You can save the state of my application by first selecting finished selection, then selecting save button
 - You can reload the state of my application by first selecting finished selection, then selecting load button
+
+# Phase 4: Task 2
+Thu Apr 13 14:07:31 PDT 2023
+Added Pokemon to a party.
+Thu Apr 13 14:07:31 PDT 2023
+Added Pokemon to a party.
+Thu Apr 13 14:07:32 PDT 2023
+Added Pokemon to a party.
+Thu Apr 13 14:07:35 PDT 2023
+Added Pokemon to a party.
+Thu Apr 13 14:07:35 PDT 2023
+Added Pokemon to a party.
+Thu Apr 13 14:07:35 PDT 2023
+Added Pokemon to a party.
+Thu Apr 13 14:07:35 PDT 2023
+Challenger party created.
+Thu Apr 13 14:07:49 PDT 2023
+Party order reversed.

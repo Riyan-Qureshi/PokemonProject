@@ -32,6 +32,7 @@ public class Party implements Writable {
     public void addMember(Pokemon pokemon) {
         if (this.party.size() < MAX_PARTY_SIZE) {
             this.party.add(pokemon);
+            EventLog.getInstance().logEvent(new Event("Added Pokemon to a party."));
         }
     }
 
@@ -61,5 +62,17 @@ public class Party implements Writable {
             jsonArray.put(pokemon.toJson());
         }
         return jsonArray;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: reverses current order of party
+    public void reverseParty() {
+        List<Pokemon> reversedParty = new ArrayList<>();
+        for (int i = this.party.size(); i > 0; i--) {
+            reversedParty.add(this.party.get(i - 1));
+        }
+
+        this.party = reversedParty;
+        EventLog.getInstance().logEvent(new Event("Party order reversed."));
     }
 }

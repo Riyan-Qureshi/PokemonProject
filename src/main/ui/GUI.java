@@ -1,15 +1,14 @@
 package ui;
 
-import model.Challenger;
-import model.GeneratePokemonPC;
-import model.Pokemon;
-import model.Trainer;
+import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ public class GUI extends JFrame {
     private PartySelectPanel partySelectPanel;
     private MenuPanel menuPanel;
     private PartyListPanel partyListPanel;
-    private ImageIcon icon = new ImageIcon("./data/smallPokeball.png");
+    private final ImageIcon icon = new ImageIcon("./data/smallPokeball.png");
 
     // EFFECTS: Sets up the GUI
     public GUI() {
@@ -39,6 +38,7 @@ public class GUI extends JFrame {
         }
         createMyTrainer();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setUpWindowListener();
         setUndecorated(false);
         partySelectPanel = new PartySelectPanel();
         menuPanel = new MenuPanel();
@@ -47,6 +47,25 @@ public class GUI extends JFrame {
         setUpAllButtonListeners();
         pack();
         setVisible(true);
+    }
+
+    // EFFECTS: Creates window listener that handles press of any window button
+    private void setUpWindowListener() {
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.out.println("This window event thing works!");
+                printLog(EventLog.getInstance());
+                EventLog.getInstance().clear();
+            }
+        });
+    }
+
+    // EFFECTS: Prints every event that has occurred during the application onto the console
+    private void printLog(EventLog eventLog) {
+        for (Event e : eventLog) {
+            System.out.println(e.toString());
+        }
     }
 
     // EFFECTS: Handles press of any button displayed on GUI
@@ -93,7 +112,7 @@ public class GUI extends JFrame {
         }
 
         String reverseListString = reverseList.stream().map(Object::toString).collect(Collectors.joining(","));
-
+        player.getParty().reverseParty();
         return reverseListString;
     }
 
@@ -223,7 +242,6 @@ public class GUI extends JFrame {
     private void createMyTrainer() {
         String name = JOptionPane.showInputDialog("What is your name?");
         player = new Trainer(name);
-        System.out.println("\nIt's nice to meet you " + name + "!");
     }
 
     // MODIFIES: this

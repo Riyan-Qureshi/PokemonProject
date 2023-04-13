@@ -39,6 +39,8 @@ public class Challenger extends Trainer {
             randomPokemon = availablePokemonStorage.getPokemon(randomStorageSlotNum);
             getParty().addMember(randomPokemon);
         }
+
+        EventLog.getInstance().logEvent(new Event("Challenger party created."));
     }
 
     public int getPartySize() {
