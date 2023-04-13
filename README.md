@@ -35,7 +35,8 @@
 - You can save the state of my application by first selecting finished selection, then selecting save button
 - You can reload the state of my application by first selecting finished selection, then selecting load button
 
-# Phase 4: Task 2
+# Phase 4: Task 2 
+- (Note: "Added Pokemon to a party" will show doubled because it is added to both trainer and challenger)
 Thu Apr 13 14:07:31 PDT 2023
 Added Pokemon to a party.
 Thu Apr 13 14:07:31 PDT 2023
