@@ -53,3 +53,13 @@ Thu Apr 13 14:07:35 PDT 2023
 Challenger party created.
 Thu Apr 13 14:07:49 PDT 2023
 Party order reversed.
+
+# Phase 4: Task 3 
+- Ideally if I had more time I would have liked to separate the business logic and the rendering logic that is happening
+  within the GUI as I believe the GUI should only display visual elements, and not handle any interactions that are 
+  part of the game's logic. This would imply that in our UML diagram we would be able to separate the association of our 
+  model components such as trainer, challenger, etc., that are inherently closely tied to the game's logic, from the 
+  visual components of the game; I would rather delegate these interactions to a separate panel dedicated for 
+  handling the game's logic. The benefit to this approach would be that there would be a clear separation of concern of 
+  the different types of entities present within my application. Furthermore, this would allow my application to be a 
+  lot more extensible so other contributors would have an easier time modifying or adding to my application.
